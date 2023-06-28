@@ -1,0 +1,112 @@
+{% load static %}
+{% load tz %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{{about}}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/main.css'%}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
+    </head>
+    <body>
+        {% block content %}
+           {% include 'component/nav.html' %}
+            <div class="about">
+                <div class="title">
+                    <h1>About Me</h1>
+                    <div class="line"></div>
+                </div>
+ 
+                <div class="about-content">
+                    <div class="about-pic">
+                        <img src="{% static 'images/about.png' %}" style="max-width: 100%; border-radius:1rem; object-fit:cover; overflow:hidden ">
+                    </div>
+                    <div class="my-infos">
+                        <div class="me">
+                            <h2>Who am i?</h2>
+                            <p>
+                                I'm a passionate IT student and full-stack developer. I love diving into the backend, discovering the inner workings of software, and building robust solutions. While my primary focus is backend development, I also enjoy the creative aspects of frontend design. 
+                                <br/>
+                                I strive to create seamless experiences and collaborate with cross-functional teams.<br/><br/> Let's connect and create something exceptional together!
+                            </p>
+                        </div>
+                        <h2>Personal Info<h3>
+                            <div class="personal-info">
+                                 <div class="info-container">
+                                      <div class="item-info">
+                                          <div>
+                                            <i class="fa fa-phone-square" style="color:#CC0B0B;" aria-hidden="true"></i>
+                                          </div>
+                                          <div class="info-content">
+                                             <span>phone</span>
+                                             <p style="">+90 5338 428 756</p>
+                                          </div>
+                                      </div>
+
+                                      <div class="item-info" style="margin-top:0.5rem">
+                                        <div>
+                                          <i class="fa fa-envelope" style="color:#33ab9b" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="info-content">
+                                           <span>phone</span>
+                                           <p style="padding:0">michaelNyembo03@gmail.com</p>
+                                        </div>
+                                    </div>
+                                 </div>
+
+                                 <div class="info-container">
+                                    <div class="item-info">
+                                        <div>
+                                          <i class="fa fa-map-marker" style="color:#91045e;" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="info-content">
+                                           <span>address</span>
+                                           <p style="">CIU APT B9</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="item-info" style="margin-top:0.5rem">
+                                      <div>
+                                        <i class="fa fa-birthday-cake" style="color:#bf8e08" aria-hidden="true"></i>
+                                      </div>
+                                      <div class="info-content">
+                                         <span>birthday</span>
+                                         <p style="padding:0">07/04/1997</p>
+                                      </div>
+                                  </div>
+                               </div>
+                            </div>
+                    </div>
+                </div>
+                <h1>What I do</h1>
+                <div class="do">
+                    <div class="do-item">
+                        <i class="fa-solid fa-screwdriver-wrench" style="color:#8f007e"></i>
+                        <div>
+                            <p>Computer maintenance</p>
+                        </div>
+                    </div>
+                    <div class="do-item">
+                        <i class="fa-solid fa-code" style="color:#608704"></i>
+                        <div>
+                            <p>Web development</p>
+                        </div>
+                    </div>
+                    <div class="do-item">
+                        <i class="fa-solid fa-music" style="color:#03489c"></i>
+                        <div>
+                            <p>Audio production</p>
+                        </div>
+                    </div>
+                </div>
+                <span style="text-align:center; margin-top:3rem;">&copy; {% now 'Y'%} All rights reserved by ThechPro (MichaelNyembo)</span>
+            </div>
+        {% endblock %}
+    </body>
+</html>

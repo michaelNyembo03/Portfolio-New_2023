@@ -1,0 +1,111 @@
+{% load static %}
+{% load tz %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{{about}}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/main.css'%}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
+    </head>
+    <body>
+        {% block content %}
+           {% include 'component/nav.html' %}
+            <div class="work">
+                <div class="title">
+                    <h1>Work</h1>
+                    <div class="line"></div>
+                </div>
+ 
+                <div class="work-content">
+                    <div class="work-item">
+                      
+                        <div class="item-pic">
+                            <img src="{% static 'images/book.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book" class="zoom-img"/>
+                        </div>
+                         <span>Webapp</span>
+                         <p>Library Mangement System</p>
+                    </div>
+
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                          <span class="close" onclick="closeModal()">&times;</span>
+                          <h2>Library Management System</h2>
+                          <p>This is a web application for managing a library. It allows users to search for books, borrow and return books, and track the inventory. The system also includes features for managing user accounts and generating reports.</p>
+                          <span>technology used: <span style="color:#ff584d">php&MySQL, html,css&js, bootstrap</span></span>
+                        </br>
+                        </br>
+                          <i><a href="#" style="color:red;">github repository</a></i>
+                          <div style="display:flex; justify-content:center; align-items: center; width:100%; background-color: #fcba03;margin: 1rem auto; border-radius:0.5rem">
+                            <img src="{% static 'images/book.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book"/>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="work-item">
+                      
+                        <div class="item-pic">
+                            <img src="{% static 'images/pos.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book" class="zoom-img"/>
+                        </div>
+                         <span>Webapp</span>
+                         <p>Point of sale Management system</p>
+                    </div>
+
+                    <div class="work-item">
+                      
+                        <div class="item-pic">
+                            <img src="{% static 'images/travel.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book" class="zoom-img"/>
+                        </div>
+                         <span>Webapp</span>
+                         <p>Travel website</p>
+                    </div>
+
+                    <div class="work-item">
+                      
+                        <div class="item-pic">
+                            <img src="{% static 'images/cross.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book" class="zoom-img" onclick="openModal()"/>
+                        </div>
+                         <span>Webapp</span>
+                         <p>MonTemoignage</p>
+                    </div>
+                    
+                </div>
+                <span style="text-align:center; margin-top:3rem;">&copy; {% now 'Y'%} All rights reserved by ThechPro (MichaelNyembo)</span>
+            </div>
+
+           
+        {% endblock %} <script>
+                
+                function openModal() {
+                    var modal = document.getElementById("modal");
+                    modal.style.display = "block";
+                  }
+                  
+                  function closeModal() {
+                    var modal = document.getElementById("modal");
+                    modal.style.display = "none";
+                  }
+                  
+            </script>
+
+         <script>
+                
+                function openModal() {
+                    var modal = document.getElementById("modal");
+                    modal.style.display = "block";
+                  }
+                  
+                  function closeModal() {
+                    var modal = document.getElementById("modal");
+                    modal.style.display = "none";
+                  }
+                  
+            </script>
+    </body>
+</html>

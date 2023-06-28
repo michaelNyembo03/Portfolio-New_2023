@@ -1,0 +1,73 @@
+{% load static %}
+{% load tz %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{{about}}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/main.css'%}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
+    </head>
+    <body>
+        {% block content %}
+           {% include 'component/nav.html' %}
+            <div class="resume">
+                <div class="title">
+                    <h1>Resume</h1>
+                    <div class="line"></div>
+                </div>
+ 
+                <div class="resume-content">
+                    <div class="Education box">
+                        <h2><i class="fa-solid fa-graduation-cap" style="color:#ff2b2b"></i> Education</h2>
+                        <div class="Education-content">
+                            <span>2018-2019</span>
+                            <p>Hcin Information System Engineering</p>
+                            <span>Eduvos, South Africa (former Pearson Institute)</span>
+                        </div>
+                        <div class="Education-content">
+                            <span>2020-2022</span>
+                            <p>ASin Computer programming</p>
+                            <span>Cyprus International University</span>
+                        </div>
+                    </div>
+
+                    <div class="Experience box">
+                        <h2><i class="fa-solid fa-briefcase" style="color:#ff2b2b"></i> Experience</h2>
+                        <div class="Experience-content">
+                            <span>2017-present</span>
+                            <p>Computer maintenance</p>
+                            <span>Self-employed</span>
+                        </div>
+                        <div class="Experience-content">
+                            <span>2023-present</span>
+                            <p>Web developement</p>
+                            <span>Self-employed</span>
+                        </div>
+                    </div>
+
+                    <div class="Skills box">
+                        <h2><i class="fa-solid fa-kitchen-set" style="color:#ff2b2b"></i> Skills</h2>
+                        <div class="Skills-content">
+                            <span style="color:#ff3d3d">html</span>
+                            <span style="color:#fcba03">css</span>
+                            <span style="color:#e803fc">js</span>
+                            <span style="color:#58f5e5">Django</span>
+                            <span style="color:#26f723">php</span>
+                            <span style="color:#f75631">Github</span>
+                            <span style="color:#fcba03">java</span>
+                            <span style="color:#58f5e5">C#</span>
+                        </div>
+                    </div>
+                </div>
+                <span style="text-align:center; margin-top:3rem;">&copy; {% now 'Y'%} All rights reserved by ThechPro (MichaelNyembo)</span>
+            </div>
+        {% endblock %}
+    </body>
+</html>

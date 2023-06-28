@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'component/nav.html' %}
+    
+    <div class="home">
+        <img src="{% static 'images/profile.png' %}" alt="profile" style="width:280px; border-radius:50%;"/>
+        <h1>Michael Nyembo</h1>
+        <span>Full Stack developer</span>
+        <div class="social-network">
+            <ul>
+                <li><a><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                <li><a><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                <li><a><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                <li><a><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+        <a class="download-btn">Dowload resume <i class="fa fa-download" aria-hidden="true"></i></a>
+    </div>
+
+{% endblock %}
