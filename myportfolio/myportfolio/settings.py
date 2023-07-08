@@ -30,6 +30,19 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+#email settings
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'michelnyembo.dev@gmail.com'
+EMAIL_HOST_PASSWORD = 'pbgooupodosuawxg'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+RECIPIENT_EMAIL = DEFAULT_FROM_EMAIL
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     'the_site',
     "django_browser_reload",
 ]

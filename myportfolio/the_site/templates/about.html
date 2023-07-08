@@ -14,9 +14,31 @@
         <script src="{% static 'js/main.js' %}"></script>
         <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
     </head>
-    <body>
+    <body class="theme">
         {% block content %}
-           {% include 'component/nav.html' %}
+        <div class="nav">
+            <a class="logo">Portfolio</a>
+        
+            <div class="menu">
+                 <ul class="list">
+                     <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> home</a></li>
+                     <li id="active"><a href="/about"><i class="fa fa-user" aria-hidden="true"></i> about</a></li>
+                     <li><a href="/resume"><i class="fa fa-sticky-note" aria-hidden="true"></i> resume</a></li>
+                     <li><a href="/work"><i class="fa fa-briefcase" aria-hidden="true"></i> works</a></li>
+                     <li><a href="/contact"><i class="fa fa-phone-square" aria-hidden="true"></i> contact</a></li>
+                 </ul>
+                 <span class="btn-menu" onclick="toggleMenu()"><i class="fa fa-bars" aria-hidden="true"></i></span>
+            </div>
+        </div>
+        <div class="menu-responsive">
+            <ul>
+                <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> home</a></li>
+                <li id="res-menu-active"><a href="/about"><i class="fa fa-user" aria-hidden="true"></i> about</a></li>
+                <li><a href="/resume"><i class="fa fa-sticky-note" aria-hidden="true"></i> resume</a></li>
+                <li><a href="/about"><i class="fa fa-briefcase" aria-hidden="true"></i> works</a></li>
+                <li><a href="/contact"><i class="fa fa-phone-square" aria-hidden="true"></i> contact</a></li>
+            </ul>
+        </div>
             <div class="about">
                 <div class="title">
                     <h1>About Me</h1>
@@ -25,15 +47,13 @@
  
                 <div class="about-content">
                     <div class="about-pic">
-                        <img src="{% static 'images/about.png' %}" style="max-width: 100%; border-radius:1rem; object-fit:cover; overflow:hidden ">
+                        <img src="{{identity.image.url}}" style="max-width: 100%; border-radius:1rem; object-fit:cover; overflow:hidden ">
                     </div>
                     <div class="my-infos">
                         <div class="me">
                             <h2>Who am i?</h2>
                             <p>
-                                I'm a passionate IT student and full-stack developer. I love diving into the backend, discovering the inner workings of software, and building robust solutions. While my primary focus is backend development, I also enjoy the creative aspects of frontend design. 
-                                <br/>
-                                I strive to create seamless experiences and collaborate with cross-functional teams.<br/><br/> Let's connect and create something exceptional together!
+                                {{identity.about_me | safe}}
                             </p>
                         </div>
                         <h2>Personal Info<h3>
@@ -45,7 +65,7 @@
                                           </div>
                                           <div class="info-content">
                                              <span>phone</span>
-                                             <p style="">+90 5338 428 756</p>
+                                             <p style="">{{identity.phone}}</p>
                                           </div>
                                       </div>
 
@@ -55,7 +75,7 @@
                                         </div>
                                         <div class="info-content">
                                            <span>phone</span>
-                                           <p style="padding:0">michaelNyembo03@gmail.com</p>
+                                           <p style="padding:0">{{identity.email}}</p>
                                         </div>
                                     </div>
                                  </div>
@@ -67,7 +87,7 @@
                                         </div>
                                         <div class="info-content">
                                            <span>address</span>
-                                           <p style="">CIU APT B9</p>
+                                           <p style="">{{identity.address}}</p>
                                         </div>
                                     </div>
 
@@ -77,7 +97,7 @@
                                       </div>
                                       <div class="info-content">
                                          <span>birthday</span>
-                                         <p style="padding:0">07/04/1997</p>
+                                         <p style="padding:0">{{identity.birthday}}</p>
                                       </div>
                                   </div>
                                </div>
@@ -86,27 +106,47 @@
                 </div>
                 <h1>What I do</h1>
                 <div class="do">
+                    {% for service in services %}
                     <div class="do-item">
-                        <i class="fa-solid fa-screwdriver-wrench" style="color:#8f007e"></i>
+                        <i class="{{service.icon_class}}" style="color:#8f007e"></i>
                         <div>
-                            <p>Computer maintenance</p>
+                            <p>{{service.service}}</p>
                         </div>
                     </div>
-                    <div class="do-item">
-                        <i class="fa-solid fa-code" style="color:#608704"></i>
-                        <div>
-                            <p>Web development</p>
-                        </div>
-                    </div>
-                    <div class="do-item">
-                        <i class="fa-solid fa-music" style="color:#03489c"></i>
-                        <div>
-                            <p>Audio production</p>
-                        </div>
-                    </div>
+                    {% endfor%}
+                
                 </div>
                 <span style="text-align:center; margin-top:3rem;">&copy; {% now 'Y'%} All rights reserved by ThechPro (MichaelNyembo)</span>
             </div>
         {% endblock %}
+        <script>
+            
+    const btnMenu = document.querySelector('.btn-menu');
+    const menuResponsive = document.querySelector('.menu-responsive');
+
+    function toggleMenu(){
+        
+        if(menuResponsive.style.display=== 'none'){
+            menuResponsive.style.display = 'block';
+            btnMenu.innerHTML = '<i class="fa fa-close" aria-hidden="true"></i>';
+        }else{
+            menuResponsive.style.display = 'none';
+            btnMenu.innerHTML = '<i class="fa fa-bars" aria-hidden="true"></i>';
+        }
+    }
+2
+  
+ $(window).resize(function() {
+    var screenWidth = $(window).width();
+    var menuResponsive = $('.menu-responsive');
+
+    
+    if (screenWidth > 992) {
+      menuResponsive.css('display', 'none');
+    } else {
+        btnMenu.innerHTML = '<i class="fa fa-bars" aria-hidden="true"></i>';
+    }
+  });
+        </script>
     </body>
 </html>

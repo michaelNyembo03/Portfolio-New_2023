@@ -16,95 +16,105 @@
     </head>
     <body>
         {% block content %}
-           {% include 'component/nav.html' %}
+        <div class="nav">
+          <a class="logo">Portfolio</a>
+      
+          <div class="menu">
+               <ul class="list">
+                   <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> home</a></li>
+                   <li><a href="/about"><i class="fa fa-user" aria-hidden="true"></i> about</a></li>
+                   <li><a href="/resume"><i class="fa fa-sticky-note" aria-hidden="true"></i> resume</a></li>
+                   <li id="active"><a href="/work"><i class="fa fa-briefcase" aria-hidden="true"></i> works</a></li>
+                   <li><a href="/contact"><i class="fa fa-phone-square" aria-hidden="true"></i> contact</a></li>
+               </ul>
+               <span class="btn-menu" onclick="toggleMenu()"><i class="fa fa-bars" aria-hidden="true"></i></span>
+          </div>
+      </div>
+      <div class="menu-responsive">
+          <ul>
+              <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> home</a></li>
+              <li><a href="/about"><i class="fa fa-user" aria-hidden="true"></i> about</a></li>
+              <li><a href="/resume"><i class="fa fa-sticky-note" aria-hidden="true"></i> resume</a></li>
+              <li id="res-menu-active"><a href="/work"><i class="fa fa-briefcase" aria-hidden="true"></i> works</a></li>
+              <li><a href="/contact"><i class="fa fa-phone-square" aria-hidden="true"></i> contact</a></li>
+          </ul>
+      </div>
             <div class="work">
                 <div class="title">
                     <h1>Work</h1>
                     <div class="line"></div>
                 </div>
- 
-                <div class="work-content">
-                    <div class="work-item">
-                      
-                        <div class="item-pic">
-                            <img src="{% static 'images/book.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book" class="zoom-img"/>
-                        </div>
-                         <span>Webapp</span>
-                         <p>Library Mangement System</p>
-                    </div>
+<div class="work-content">
+  {% for x in work %}
+    <div class="work-item">
+      <div class="item-pic">
+        <img src="{{ x.image.url }}" style="max-width: 80%; border-radius: 1rem; object-fit: cover; overflow: hidden; background-color: transparent;" alt="Book" class="zoom-img" onclick="openModal('modal-{{ x.id }}')"/>
+      </div>
+      <span>{{ x.type }}</span>
+      <p>{{ x.name }}</p>
 
-                    <div id="modal" class="modal">
-                        <div class="modal-content">
-                          <span class="close" onclick="closeModal()">&times;</span>
-                          <h2>Library Management System</h2>
-                          <p>This is a web application for managing a library. It allows users to search for books, borrow and return books, and track the inventory. The system also includes features for managing user accounts and generating reports.</p>
-                          <span>technology used: <span style="color:#ff584d">php&MySQL, html,css&js, bootstrap</span></span>
-                        </br>
-                        </br>
-                          <i><a href="#" style="color:red;">github repository</a></i>
-                          <div style="display:flex; justify-content:center; align-items: center; width:100%; background-color: #fcba03;margin: 1rem auto; border-radius:0.5rem">
-                            <img src="{% static 'images/book.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book"/>
-                          </div>
-                        </div>
-                      </div>
+      <div id="modal-{{ x.id }}" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('modal-{{ x.id }}')">&times;</span>
+          <h2>{{ x.name }}</h2>
+          <p>{{ x.description | safe }}</p>
+          <span>Technology used: <span style="color: #ff584d">{{ x.tech_used }}</span></span>
+          <br/><br/>
+          <i><a href="{{x.github}}" style="color: red;" target="_blank">GitHub repository</a></i>
+          <div style="display: flex; justify-content: center; align-items: center; width: 100%; background-color: #fcba03; margin: 1rem auto; border-radius: 0.5rem;">
+            <img src="{{ x.image.url }}" style="max-width: 80%; border-radius: 1rem; object-fit: cover; overflow: hidden; background-color: transparent;" alt="Book"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
-                    <div class="work-item">
-                      
-                        <div class="item-pic">
-                            <img src="{% static 'images/pos.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book" class="zoom-img"/>
-                        </div>
-                         <span>Webapp</span>
-                         <p>Point of sale Management system</p>
-                    </div>
-
-                    <div class="work-item">
-                      
-                        <div class="item-pic">
-                            <img src="{% static 'images/travel.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book" class="zoom-img"/>
-                        </div>
-                         <span>Webapp</span>
-                         <p>Travel website</p>
-                    </div>
-
-                    <div class="work-item">
-                      
-                        <div class="item-pic">
-                            <img src="{% static 'images/cross.png' %}" style="max-width: 80%; border-radius:1rem; object-fit:cover; overflow:hidden; backround-color:transparent;" alt="Book" class="zoom-img" onclick="openModal()"/>
-                        </div>
-                         <span>Webapp</span>
-                         <p>MonTemoignage</p>
-                    </div>
-                    
-                </div>
                 <span style="text-align:center; margin-top:3rem;">&copy; {% now 'Y'%} All rights reserved by ThechPro (MichaelNyembo)</span>
             </div>
 
            
-        {% endblock %} <script>
-                
-                function openModal() {
-                    var modal = document.getElementById("modal");
-                    modal.style.display = "block";
-                  }
-                  
-                  function closeModal() {
-                    var modal = document.getElementById("modal");
-                    modal.style.display = "none";
-                  }
-                  
-            </script>
+        {% endblock %} 
 
          <script>
                 
-                function openModal() {
-                    var modal = document.getElementById("modal");
+                function openModal(modalId) {
+                    var modal = document.getElementById(modalId);
                     modal.style.display = "block";
                   }
                   
-                  function closeModal() {
-                    var modal = document.getElementById("modal");
+                  function closeModal(modalId) {
+                    var modal = document.getElementById(modalId);
                     modal.style.display = "none";
                   }
+            
+                    const btnMenu = document.querySelector('.btn-menu');
+                    const menuResponsive = document.querySelector('.menu-responsive');
+                
+                    function toggleMenu(){
+                        
+                        if(menuResponsive.style.display=== 'none'){
+                            menuResponsive.style.display = 'block';
+                            btnMenu.innerHTML = '<i class="fa fa-close" aria-hidden="true"></i>';
+                        }else{
+                            menuResponsive.style.display = 'none';
+                            btnMenu.innerHTML = '<i class="fa fa-bars" aria-hidden="true"></i>';
+                        }
+                    }
+                2
+                  
+                 $(window).resize(function() {
+                    var screenWidth = $(window).width();
+                    var menuResponsive = $('.menu-responsive');
+                
+                    
+                    if (screenWidth > 992) {
+                      menuResponsive.css('display', 'none');
+                    } else {
+                        btnMenu.innerHTML = '<i class="fa fa-bars" aria-hidden="true"></i>';
+                    }
+                  });
+                       
                   
             </script>
     </body>
